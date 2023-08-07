@@ -7,6 +7,7 @@ export const api = createApi({
     "User",
     "Predicts",
     "Customers",
+    "Sales",
     "Admins",
     "Dashboard",
     "Admin",
@@ -42,10 +43,16 @@ export const api = createApi({
         providesTags: ["Customers"],
       })
     }),
+  
+    getSales: build.query({
+      query: () => "sales/sales",
+      providesTags: ["Sales"],
+    }),
     getAdmins: build.query({
       query: () => "management/admins",
       providesTags: ["Admins"],
     }),
+    
     getDashboard: build.query({
       query: () => "general/dashboard",
       providesTags: ["Dashboard"],
@@ -57,7 +64,11 @@ export const {
   useGetUserQuery,
   useGetPredictsQuery,
   useGetCustomersQuery,
+  useGetTransactionsQuery,
+  useGetGeographyQuery,
+  useGetSalesQuery,
   useGetAdminsQuery,
+  useGetUserPerformanceQuery,
   useGetDashboardQuery,
   useAddAdminQuery,
   useDeleteCustomerMutation,
