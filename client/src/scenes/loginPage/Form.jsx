@@ -12,7 +12,6 @@ import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setLogin } from "../../state";
-import { useAddAdminQuery } from "../../state/api";
 
 const registerSchema = yup.object().shape({
   firstName: yup.string().required("required"),
@@ -57,7 +56,7 @@ const Form = () => {
     console.log(formData)
 
     const savedUserResponse = await fetch(
-      "http://localhost:5001/auth/register",
+      `${process.env.REACT_APP_BASE_URL}auth/register`,
       {
         method: "POST",
         headers:{
@@ -75,7 +74,7 @@ const Form = () => {
   };
 
   const login = async (values, onSubmitProps) => {
-    const loggedInResponse = await fetch("http://localhost:5001/auth/login", {
+    const loggedInResponse = await fetch(`${process.env.REACT_APP_BASE_URL}auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),
