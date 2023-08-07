@@ -7,11 +7,7 @@ export const api = createApi({
     "User",
     "Predicts",
     "Customers",
-    "Transactions",
-    "Geography",
-    "Sales",
     "Admins",
-    "Performance",
     "Dashboard",
     "Admin",
   ],
@@ -46,29 +42,9 @@ export const api = createApi({
         providesTags: ["Customers"],
       })
     }),
-    getTransactions: build.query({
-      query: ({ page, pageSize, sort, search }) => ({
-        url: "client/transactions",
-        method: "GET",
-        params: { page, pageSize, sort, search },
-      }),
-      providesTags: ["Transactions"],
-    }),
-    getGeography: build.query({
-      query: () => "client/geography",
-      providesTags: ["Geography"],
-    }),
-    getSales: build.query({
-      query: () => "sales/sales",
-      providesTags: ["Sales"],
-    }),
     getAdmins: build.query({
       query: () => "management/admins",
       providesTags: ["Admins"],
-    }),
-    getUserPerformance: build.query({
-      query: (id) => `management/performance/${id}`,
-      providesTags: ["Performance"],
     }),
     getDashboard: build.query({
       query: () => "general/dashboard",
@@ -81,11 +57,7 @@ export const {
   useGetUserQuery,
   useGetPredictsQuery,
   useGetCustomersQuery,
-  useGetTransactionsQuery,
-  useGetGeographyQuery,
-  useGetSalesQuery,
   useGetAdminsQuery,
-  useGetUserPerformanceQuery,
   useGetDashboardQuery,
   useAddAdminQuery,
   useDeleteCustomerMutation,

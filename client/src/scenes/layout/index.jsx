@@ -11,7 +11,7 @@ import { Navigate } from "react-router-dom";
 const Layout = () => {
   const isNonMobile = useMediaQuery("(min-width: 600px)");
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const [localStorageItem, setlocalStorageItem] = useState(JSON.parse(localStorage.getItem('profile')));
+  const [localStorageItem, setlocalStorageItem] = useState(JSON.parse(localStorage?.getItem('profile')));
   const navigate = useNavigate();
   const userId = localStorageItem?.loggedIn?.user?._id;
   console.log("userid", userId);
