@@ -194,7 +194,7 @@ const Dashboard = () => {
           borderRadius="0.55rem"
         >
           <Typography variant="h6" sx={{ color: theme.palette.secondary[100] }}>
-            Credit Risk By Category
+          Loans by credit risk profile
           </Typography>
           <BreakdownChart isDashboard={true} />
           <Typography

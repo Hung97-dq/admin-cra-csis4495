@@ -3,20 +3,20 @@ import { Box, useTheme, Button } from "@mui/material";
 import { useGetCustomersQuery, useDeleteCustomerMutation } from "../../state/api";
 import Header from "../../components/Header";
 import { DataGrid } from "@mui/x-data-grid";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Customers = () => {
   const theme = useTheme();
   const { data, isLoading } = useGetCustomersQuery();
   const [deleteCustomer, response] = useDeleteCustomerMutation()
   const [clickedRow, setClickedRow] = useState();
+  const navigate = useNavigate();
   console.log("data", data);
 
   const onButtonClick = (e, row) => {
     e.stopPropagation();
     setClickedRow(row);
     deleteCustomer(row._id);
-    window.location.reload();
   };
   const columns = [
     {
@@ -53,7 +53,7 @@ const Customers = () => {
 
   return (
     <Box m="1.5rem 2.5rem">
-      <Header title="FINANCIAL REPRESENTATIVE" subtitle="List of Finiancial Representative" />
+      <Header title="REPRESENTATIVE" subtitle="List of Representative" />
       <Box
         mt="40px"
         height="75vh"

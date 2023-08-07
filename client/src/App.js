@@ -24,7 +24,7 @@ function App() {
         <Route element={<Layout />}>
           
           <Route path="/dashboard" element={<Dashboard/>} />
-          <Route path="/finiancial representative" element={<Customers/>} />
+          <Route path="/representative" element={<Customers/>} />
           <Route path="/admin" element={<Admin />} />
         </Route>
       </Routes>

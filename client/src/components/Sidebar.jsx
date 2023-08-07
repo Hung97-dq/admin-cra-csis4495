@@ -47,7 +47,7 @@ const navItems = [
   //   icon: <ShoppingCartOutlined />,
   // },
   {
-    text: "Finiancial Representative",
+    text: "Representative",
     icon: <Groups2Outlined />,
   },
   {
