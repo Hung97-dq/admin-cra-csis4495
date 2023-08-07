@@ -26,12 +26,16 @@ const Dashboard = () => {
   const isNonMediumScreens = useMediaQuery("(min-width: 1200px)");
   const { data, isLoading } = useGetDashboardQuery();
   let totalLoanAMount = 0;
+  let potentialExpectedLoss =0;
   let USDollar = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
 });
   for (let la in data?.transactions){
     totalLoanAMount += parseFloat(data?.transactions[la].loanAmount)
+  }
+  for (let el in data?.predicts){
+    potentialExpectedLoss += parseFloat(data?.predicts[el].e_loss)
   }
   console.log(data);
 
@@ -108,7 +112,7 @@ const Dashboard = () => {
         />
         <StatBox
           title="Requested Loan Amount"
-          value={data && USDollar.format(totalLoanAMount)}
+          value={data && `${USDollar.format(totalLoanAMount/1000)}K`}
           // increase="+21%"
           // description="Since last month"
           icon={
@@ -127,8 +131,8 @@ const Dashboard = () => {
           <OverviewChart view="sales" isDashboard={true} />
         </Box>
         <StatBox
-          title="Total Staff"
-          value={data && data.users.length}
+          title="Potential Expected Loss"
+          value={data && `${USDollar.format(potentialExpectedLoss/1000)}K`}
           // increase="+5%"
           // description="Since last month"
           icon={

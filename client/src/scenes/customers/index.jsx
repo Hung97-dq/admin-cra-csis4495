@@ -8,6 +8,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 const Customers = () => {
   const theme = useTheme();
   const { data, isLoading } = useGetCustomersQuery();
+  const text = `Total of ${data?.length} Representatives`;
   const [deleteCustomer, response] = useDeleteCustomerMutation()
   const [clickedRow, setClickedRow] = useState();
   const navigate = useNavigate();
@@ -53,7 +54,7 @@ const Customers = () => {
 
   return (
     <Box m="1.5rem 2.5rem">
-      <Header title="REPRESENTATIVE" subtitle="List of Representative" />
+      <Header title="REPRESENTATIVE" subtitle = {text} />
       <Box
         mt="40px"
         height="75vh"
